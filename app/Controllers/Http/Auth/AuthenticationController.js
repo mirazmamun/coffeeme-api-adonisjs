@@ -16,9 +16,10 @@ class AuthenticationController {
         data: token
       })
     } catch (error) {
+      console.log(error);
       return response.status(400).json({
         status: 'error',
-        message: 'There was a problem creating the user, please try again later.'
+        message: `There was a problem creating the user. Details are ${error.message}, please try again later.`
       })
     }
   }
@@ -27,7 +28,7 @@ class AuthenticationController {
     const { email, password } = request.only(['email', 'password'])
 
     try {
-      const token = await auth.attempt(email, password)
+      const token = await auth.withRefreshToken().attempt(email, password)
 
       return response.json({
         status: 'success',
@@ -45,6 +46,12 @@ class AuthenticationController {
     return response.json({
       status: 'success',
       data: auth.user
+    })
+  }
+  ping ({ response }) {
+    return response.json({
+      status: 'success',
+      data: 'PONG'
     })
   }
 }

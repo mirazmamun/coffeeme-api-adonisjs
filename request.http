@@ -1,0 +1,19 @@
+# POST http://localhost:3333/api/register HTTP/1.1
+# content-type: application/json
+
+# {
+#     "username" : "Miraz Al-Mamun",
+#     "email" : "miraz.al-mamun@gmail.com",
+#     "password" : "1234"
+# }
+
+# POST http://localhost:3333/api/login HTTP/1.1
+# content-type: application/json
+
+# {
+#     "email" : "miraz.al-mamun@gmail.com",
+#     "password" : "1234"
+# }
+
+GET http://localhost:3333/api/me HTTP/1.1
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsImlhdCI6MTU1MzczNTU0Mn0.xnhHzXUF4juPaH_ql8rVvWm7v7WmGEj7nv2kqvPz_hE
